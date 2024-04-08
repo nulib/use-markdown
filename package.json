@@ -4,6 +4,7 @@
   "type": "module",
   "main": "dist/use-markdown.umd.cjs",
   "module": "dist/use-markdown.mjs",
+  "types": "dist/use-markdown.d.ts",
   "exports": {
     ".": {
       "import": "./dist/use-markdown.mjs",

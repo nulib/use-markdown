@@ -1,7 +1,9 @@
+import { UseMarkdownParams, UseMarkdownReturn } from "types/use-markdown";
+
 import React from "react";
 import { convertMarkdownToHtml } from "./lib/markdown-helpers";
 
-function useMarkdown(markdown: string): { html: string; jsx: JSX.Element } {
+function useMarkdown(markdown: UseMarkdownParams): UseMarkdownReturn {
   const [html, setHtml] = React.useState<string>("");
 
   React.useEffect(() => {

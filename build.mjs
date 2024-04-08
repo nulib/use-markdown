@@ -1,5 +1,6 @@
 import { build } from "vite";
 import pkg from "./package.json" assert { type: "json" };
+import fs from "fs";
 
 (async () => {
   await build({
@@ -35,4 +36,7 @@ import pkg from "./package.json" assert { type: "json" };
       },
     },
   });
+
+  console.log("Copying types to dist/use-markdown.d.ts");
+  fs.copyFileSync("src/types/use-markdown.ts", "dist/use-markdown.d.ts");
 })();
