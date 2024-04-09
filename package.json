@@ -1,14 +1,15 @@
 {
   "name": "@nulib/use-markdown",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
-  "main": "dist/use-markdown.umd.cjs",
-  "module": "dist/use-markdown.mjs",
-  "types": "dist/use-markdown.d.ts",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/use-markdown.js",
+  "types": "./dist/use-markdown.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/use-markdown.mjs",
-      "require": "./dist/use-markdown.umd.cjs",
+      "import": "./dist/use-markdown.js",
       "types": "./dist/use-markdown.d.ts"
     }
   },
@@ -17,6 +18,7 @@
     "clean": "rimraf dist",
     "dev": "vite",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "prepublishOnly": "npm run build",
     "preview": "vite preview",
     "test": "vitest"
   },
