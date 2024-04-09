@@ -1,6 +1,6 @@
 {
   "name": "@nulib/use-markdown",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "main": "dist/use-markdown.umd.cjs",
   "module": "dist/use-markdown.mjs",
