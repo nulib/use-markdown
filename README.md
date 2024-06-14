@@ -28,6 +28,17 @@ const MyComponent = () => {
 export default MyComponent;
 ```
 
+Alternatively, you can do something with the `html` string directly.
+
+```jsx
+const { html } = useMarkdown(markdown);
+
+// Do something with the html string
+const newHtml = html + "<p>foo</p>";
+
+return <div dangerouslySetInnerHTML={{ __html: newHtml }} />;
+```
+
 ## Development
 
 Run in development environment.
