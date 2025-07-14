@@ -1,16 +1,18 @@
 import { build } from "vite";
 import pkg from "./package.json" assert { type: "json" };
 import fs from "fs";
+import path from "path";
 
 (async () => {
   await build({
     build: {
-      outDir: `dist`,
+      outDir: "dist",
       sourcemap: true,
       lib: {
-        name: "use-markdown",
-        entry: "./src/use-markdown.tsx",
+        name: "useMarkdown",
+        entry: path.resolve("src/use-markdown.tsx"),
         fileName: "use-markdown",
+        formats: ["es"], // ✅ Just ESM
       },
       minify: "esbuild",
       rollupOptions: {
@@ -30,13 +32,20 @@ import fs from "fs";
             unified: "unified",
           },
           exports: "named",
-          inlineDynamicImports: true,
+          inlineDynamicImports: false,
         },
         treeshake: true,
       },
     },
   });
 
-  console.log("Copying types to dist/use-markdown.d.ts");
-  fs.copyFileSync("src/types/use-markdown.ts", "dist/use-markdown.d.ts");
+  const typeSource = "src/types/use-markdown.ts";
+  const typeTarget = "dist/use-markdown.d.ts";
+
+  if (fs.existsSync(typeSource)) {
+    fs.copyFileSync(typeSource, typeTarget);
+    console.log("✔ Copied types to dist/use-markdown.d.ts");
+  } else {
+    console.warn("⚠ No types found to copy");
+  }
 })();

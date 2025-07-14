@@ -1,30 +1,18 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src/",
     "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
+    "moduleResolution": "node", // ✅ Key fix for Node/Vite
+    "jsx": "react-jsx", // ✅ Required for modern JSX
+    "lib": ["ES2020", "DOM"],
+    "esModuleInterop": true,
     "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "*": ["./*"]
-    },
-    "types": ["vitest/globals"]
+    "declaration": true, // ✅ Enables .d.ts generation
+    "declarationDir": "dist",
+    "outDir": "dist",
+    "types": ["node", "vitest/globals"],
+    "strict": true
   },
-  "include": ["src", "demo.tsx"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"],
+  "exclude": ["dist"]
 }
